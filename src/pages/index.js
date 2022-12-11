@@ -8,9 +8,7 @@ import GitHubApi from "../utils/GitHubApi";
 import ArrayUtils from "../utils/ArrayUtils";
 import NumberUtils from "../utils/NumberUtils";
 
-function IndexPage({ user, repos }) {
-
-    const copy = [...repos];
+function IndexPage({ user, repos, copy }) {
 
     const [sortKey, setSortKey] = useState("updated_at");
     const [sortDirection, setSortDirection] = useState(1);
@@ -105,7 +103,7 @@ export async function getStaticProps() {
     const repos = await GitHubApi.getListOfRepos(owner).catch(error => { throw new Error(error); });
 
     return {
-        props: { repos, user }
+        props: { repos, user, copy: repos }
     };
 }
 
