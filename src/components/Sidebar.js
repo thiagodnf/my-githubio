@@ -25,9 +25,6 @@ function Sidebar({ user, repos }) {
         stats.open_issues += repo.open_issues;
     }
 
-    console.log(stats);
-    // repos.map(e =>
-
     return (
         <aside>
             <Container fluid >
