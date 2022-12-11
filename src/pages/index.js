@@ -10,6 +10,8 @@ import NumberUtils from "../utils/NumberUtils";
 
 function IndexPage({ user, repos }) {
 
+    const copy = [...repos];
+
     const [sortKey, setSortKey] = useState("updated_at");
     const [sortDirection, setSortDirection] = useState(1);
     const [searchTerm, setSearchTerm] = useState("");
@@ -54,7 +56,7 @@ function IndexPage({ user, repos }) {
     );
 
     return (
-        <Layout user={user} repos={repos}>
+        <Layout user={user} repos={copy}>
             <Row>
                 <Col>
                     <form autoComplete="off" className="mb-3">
@@ -63,7 +65,7 @@ function IndexPage({ user, repos }) {
                                 <h3 className="m-0">Projects</h3>
                             </div>
                             <div className="ms-2 align-self-center">
-                                <input type="search" className="form-control form-control-sm btn-outline-danger" placeholder="Search projects" autoComplete="off" value={searchTerm} onChange={handleSearchTerm} />
+                                <input type="search" autoFocus className="form-control form-control-sm btn-outline-danger" placeholder="Search projects" autoComplete="off" value={searchTerm} onChange={handleSearchTerm} />
                             </div>
                             <div className="ms-2 align-self-center">
                                 <select className="form-select form-select-sm " value={sortKey} onChange={handleSortKey}>

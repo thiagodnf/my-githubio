@@ -43,10 +43,10 @@ function Sidebar({ user, repos }) {
                     <hr />
                     <h5>Stats</h5>
 
-                    <div className="smalls d-flex aligh-content-start">
-                        <i className="me-2 bi bi-star text-primary" title="Stargazers"></i>{stats.stargazers}
-                        <i className="mx-2 bi bi-shuffle text-success" title="Forks"></i>{stats.forks}
-                        <i className="mx-2 bi bi-record-circle text-danger" title="Open Issues"></i>{stats.open_issues}
+                    <div className="smalls d-flex flex-column aligh-content-start small">
+                        <div className="mb-1"><i className="me-2 bi bi-star text-primary" title="Stargazers"></i>{stats.stargazers} stargazers</div>
+                        <div className="mb-1"><i className="me-2 bi bi-shuffle text-success" title="Forks"></i>{stats.forks} forks</div>
+                        <div className="mb-1"><i className="me-2 bi bi-record-circle text-danger" title="Open Issues"></i>{stats.open_issues} open issues</div>
                     </div>
                 </div>
             </Container>
