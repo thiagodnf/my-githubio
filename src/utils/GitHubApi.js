@@ -4,7 +4,7 @@ import StringUtils from "./StringUtils";
 class GitHubApi {
 
     static octokit = new Octokit({
-        auth: process.env.GITHUB_KEY || ""
+        auth: process.env.GITHUB_TOKEN || ""
     });
 
     static async getUser(owner = "thiagodnf") {
