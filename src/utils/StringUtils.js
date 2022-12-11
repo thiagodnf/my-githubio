@@ -29,7 +29,7 @@ class StringUtils {
             return null;
         }
 
-        const regex = /<img.*src=\"(.*)\".*\/>/gm;
+        const regex = /<img.*src=\"(https?:\/\/.*\.(?:png|jpg))\".*\/>/gm;
 
         return RegexUtils.getFirstMatch(str, regex);
     }
@@ -40,7 +40,7 @@ class StringUtils {
             return null;
         }
 
-        const regex = /<img.*class=\"screenshot\".*src=\"(.*)\".*\/>/gm;
+        const regex = /<img.*class=\"screenshot\".*src=\"(https?:\/\/.*\.(?:png|jpg))\".*\/>/gm;
 
         return RegexUtils.getFirstMatch(str, regex);
     }
