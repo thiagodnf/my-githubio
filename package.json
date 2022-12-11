@@ -1,0 +1,42 @@
+{
+    "name": "my-githubio",
+    "description": "List all your projects on your github.io",
+    "version": "0.0.1",
+    "author": "Thiago Ferreira",
+    "license": "MIT",
+    "homepage": "https://github.com/thiagodnf/my-githubio",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thiagodnf/my-githubio"
+    },
+    "scripts": {
+        "dev": "npm run lint-fix && next dev",
+        "lint": "npx eslint .",
+        "export": "next build && next export -o html/",
+        "lint-fix": "npx eslint . --fix",
+        "update-dependencies": "ncu -u"
+    },
+    "keywords": [
+        "my-githubio",
+        "thiagodnf",
+        "github"
+    ],
+    "devDependencies": {
+        "@babel/eslint-parser": "7.19.1",
+        "@next/eslint-plugin-next": "13.0.6",
+        "eslint": "8.29.0"
+    },
+    "dependencies": {
+        "academicons": "1.9.2",
+        "bibtex-parse": "2.1.0",
+        "bootstrap": "5.2.3",
+        "bootstrap-icons": "1.10.2",
+        "next": "13.0.6",
+        "octokit": "2.0.10",
+        "react": "18.2.0",
+        "react-bootstrap": "2.7.0",
+        "react-dom": "18.2.0",
+        "sass": "1.56.2"
+    }
+}
