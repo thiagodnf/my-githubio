@@ -11,7 +11,7 @@ import NumberUtils from "../utils/NumberUtils";
 function IndexPage({ user, repos, copy }) {
 
     const [sortKey, setSortKey] = useState("updated_at");
-    const [sortDirection, setSortDirection] = useState(1);
+    const [sortDirection, setSortDirection] = useState(-1);
     const [searchTerm, setSearchTerm] = useState("");
 
     function handleSearchTerm(event) {
