@@ -37,7 +37,7 @@ class ArrayUtils {
                 diff = v1 - v2;
             }
 
-            if (sortDirection === 1) {
+            if (sortDirection === -1) {
                 return diff;
             } else {
                 return diff * -1;

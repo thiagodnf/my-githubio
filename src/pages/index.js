@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import * as dotenv from "dotenv-defaults";
 
 import { Row, Col, Card } from "react-bootstrap";
 
@@ -8,10 +9,10 @@ import GitHubApi from "../utils/GitHubApi";
 import ArrayUtils from "../utils/ArrayUtils";
 import NumberUtils from "../utils/NumberUtils";
 
-function IndexPage({ user, repos, copy }) {
+function IndexPage({ user, repos, copy, env }) {
 
-    const [sortKey, setSortKey] = useState("updated_at");
-    const [sortDirection, setSortDirection] = useState(-1);
+    const [sortKey, setSortKey] = useState(env.sortKey);
+    const [sortDirection, setSortDirection] = useState(env.sortDir);
     const [searchTerm, setSearchTerm] = useState("");
 
     function handleSearchTerm(event) {
@@ -80,7 +81,7 @@ function IndexPage({ user, repos, copy }) {
                             </div>
                             <div className="ms-2 align-self-center">
                                 <a className="btn btn-sm btn-outline-secondary" href="#" onClick={handlSortDirection}>
-                                    {sortDirection == 1 ? <i className="bi bi-sort-up"></i> : <i className="bi bi-sort-down"></i>}
+                                    {sortDirection == 1 ? <i className="bi bi-sort-down"></i> : <i className="bi bi-sort-up"></i>}
                                 </a>
                             </div>
                         </div>
@@ -97,13 +98,27 @@ function IndexPage({ user, repos, copy }) {
 
 export async function getStaticProps() {
 
-    const owner = process.env.GITHUB_USER || "thiagodnf";
+    dotenv.config();
+
+    if (!process.env.GITHUB_TOKEN) {
+        throw new Error("GITHUB_TOKEN is required. Please use the environment variables to set it");
+    }
+
+    const owner = process.env.GITHUB_USER;
 
     const user = await GitHubApi.getUser(owner).catch(error => { throw new Error(error); });
     const repos = await GitHubApi.getListOfRepos(owner).catch(error => { throw new Error(error); });
 
     return {
-        props: { repos, user, copy: repos }
+        props: {
+            repos,
+            user,
+            copy: repos,
+            env: {
+                sortKey: process.env.GITHUB_SORT_KEY,
+                sortDir: Number(process.env.GITHUB_SORT_DIR)
+            }
+        }
     };
 }
 

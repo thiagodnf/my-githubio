@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io/api/java,eclipse,maven
 
 .DS_Store
+.env
 
 node_modules/
 dist
